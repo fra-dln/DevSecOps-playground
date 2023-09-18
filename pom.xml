@@ -9,8 +9,8 @@
 	<version>2.1.2.RELEASE</version>
 	<relativePath/> <!-- lookup parent from repository -->
     </parent>
-    <groupId>com.scalesec</groupId>
-    <artifactId>devsecops-playground</artifactId>
+    <groupId>devsecops-playground</groupId>
+    <artifactId>devsecops-playground:devsecops-playground</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <name>Vulnerable Application By Security gurus</name>
     <description>Demo project for Spring Boot</description>
