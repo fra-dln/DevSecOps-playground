@@ -10,7 +10,7 @@
 	<relativePath/> <!-- lookup parent from repository -->
     </parent>
     <groupId>devsecops-playground</groupId>
-    <artifactId>devsecops-playground:devsecops-playground</artifactId>
+    <artifactId>devsecops-playground</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <name>Vulnerable Application By Security gurus</name>
     <description>Demo project for Spring Boot</description>
