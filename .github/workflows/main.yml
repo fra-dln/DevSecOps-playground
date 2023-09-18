@@ -36,9 +36,9 @@ jobs:
     needs: build
     name: Run the SCA Snyk scan on the source code
     steps:
-      - uses: actions/checkout@master
+      - uses: actions/checkout@main
       - name: RunSnyk to check for vulnerabilities
-        uses: snyk/actions/maven@master
+        uses: snyk/actions/maven@main
         continue-on-error: true
         env:
           SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
@@ -48,9 +48,7 @@ jobs:
     name: Run DAST ZAP scan on the web application
     steps:
       - name: Checkout
-        uses: actions/checkout@v2
-        with:
-          ref: master
+        uses: actions/checkout@v4
       - name: ZAP Scan
         uses: zaproxy/action-baseline@v0.6.1
         with:
