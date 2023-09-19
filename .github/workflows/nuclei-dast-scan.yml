@@ -1,0 +1,28 @@
+name: Build code, run unit test, run SAST, SCA, DAST security scans
+on: workflow_dispatch
+
+jobs:
+  nuclei-dast-scan:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      
+      - name: Nuclei DAST Scan
+        uses: projectdiscovery/nuclei-action@main
+        with:
+          target: https://example.com
+          #urls: urls.txt
+          flags: "-severity critical,high,medium,low -stats"
+          github-report: true
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: GitHub Workflow artifacts
+        uses: actions/upload-artifact@v2
+        with:
+          name: nuclei.log
+          path: nuclei.log
+
+      - name: GitHub Security Dashboard Alerts update
+        uses: github/codeql-action/upload-sarif@v2
+        with:
+          sarif_file: nuclei.sarif
