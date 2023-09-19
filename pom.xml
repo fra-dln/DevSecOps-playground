@@ -76,11 +76,6 @@
             <artifactId>nd4j-common</artifactId>
             <version>1.0.0-beta2</version>
         </dependency>
-        <dependency>
-            <groupId>org.eclipse.m2e</groupId>
-            <artifactId>lifecycle-mapping</artifactId>
-            <version>1.0.0</version>
-        </dependency>
 
 <!--#Change 1 - Changes for Unit Test Coverage Percentage Update on SonarCloud Dashboard
 #By ASecurityGuru
@@ -104,7 +99,7 @@
 #Default Location of CodeCoverage File is target/site/jacoco/jacoco.xml,target/site/jacoco-it/jacoco.xml,build/reports/jacoco/test/jacocoTestReport.xml
 -->
             <plugin>
-                <groupId>org.jacoco</groupId>
+               <groupId>org.jacoco</groupId>
                <artifactId>jacoco-maven-plugin</artifactId>
                 <version>0.8.7</version>
                 <executions>
@@ -127,6 +122,11 @@
                   </execution>
                 </executions>
               </plugin>
+		<plugin>
+	          <groupId>org.eclipse.m2e</groupId>
+	          <artifactId>lifecycle-mapping</artifactId>
+	          <version>1.0.0</version>
+	        </plugin>
        </plugins>
        </build>
 </project>
