@@ -1,4 +1,4 @@
-name: Build code, run unit test, run SAST, SCA, DAST security scans
+name: SAST, SCA, Secrets & DAST security scans
 #on: push #Sostituito da workflow dispatch, avviabile manualmente dalle Actions
 on: workflow_dispatch
 
