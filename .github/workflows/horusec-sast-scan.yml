@@ -1,0 +1,15 @@
+name: SAST scan with Horusec
+on: workflow_dispatch
+
+jobs:
+  horusec-sast-scan:
+    runs-on: ubuntu-latest
+    name: Horusec SAST scan
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Run Horusec
+        id: run_horusec
+        uses: fike/horusec-action@v0.2.2
+        with:
+          arguments: -c=horusec-config.json -p ./
