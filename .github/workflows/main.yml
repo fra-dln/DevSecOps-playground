@@ -1,8 +1,9 @@
 name: Build code, run unit test, run SAST, SCA, DAST security scans
-on: push
+#on: push #Sostituito da workflow dispatch, avviabile manualmente dalle Actions
+on: workflow_dispatch
 
 jobs:
-  horusec:
+  horusec-sast-scan:
     runs-on: ubuntu-latest
     name: Horusec SAST Scan
     steps:
@@ -14,10 +15,10 @@ jobs:
         with:
           arguments: -c=horusec-config.json -p ./ -e="false"
 
-  build:
+  sonarcloud-sast-scan:
     runs-on: ubuntu-latest
-    needs: horusec
-    name: Run SAST SonarCloud scan on the source codes
+    needs: horusec-sast-scan
+    name: SonarCloud SAST scan
     steps:
     - uses: actions/checkout@v2
     - name: Set up JDK 11
@@ -31,10 +32,11 @@ jobs:
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
-  security:
+        
+  snyk-sca-scan:
     runs-on: ubuntu-latest
-    needs: build
-    name: Run the SCA Snyk scan on the source code
+    needs: sonarcloud-sast-scan
+    name: Snyk SCA scan
     steps:
       - uses: actions/checkout@master
       - name: RunSnyk to check for vulnerabilities
@@ -42,10 +44,29 @@ jobs:
         continue-on-error: true
         env:
           SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
-  zap_scan:
+          
+  gitguardian-secrets-scan:
+    name: GitGuardian Secrets scan
     runs-on: ubuntu-latest
-    needs: security
-    name: Run DAST ZAP scan on the web application
+    needs: snyk-sca-scan
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 0 # fetch all history so multiple commits can be scanned. Utile anche per Sonarcloud
+      - name: GitGuardian scan
+        uses: GitGuardian/ggshield-action@v1.18.1
+        env:
+          GITHUB_PUSH_BEFORE_SHA: ${{ github.event.before }}
+          GITHUB_PUSH_BASE_SHA: ${{ github.event.base }}
+          GITHUB_PULL_BASE_SHA:  ${{ github.event.pull_request.base.sha }}
+          GITHUB_DEFAULT_BRANCH: ${{ github.event.repository.default_branch }}
+          GITGUARDIAN_API_KEY: ${{ secrets.GITGUARDIAN_API_KEY }}
+          
+  zap-dast-scan:
+    runs-on: ubuntu-latest
+    needs: gitguardian-secrets-scan
+    name: ZAP DAST scan
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -56,3 +77,30 @@ jobs:
           target: 'http://testphp.vulnweb.com/'
           rules_file_name: '.zap/rules.tsv'
           cmd_options: '-a'
+          
+  nuclei-dast-scan:
+    runs-on: ubuntu-latest
+    needs: zap-dast-scan
+    name: Nuclei DAST Scan
+    steps:
+      - uses: actions/checkout@v2
+      
+      - name: Nuclei DAST Scan
+        uses: projectdiscovery/nuclei-action@main
+        with:
+          target: http://testphp.vulnweb.com/
+          #urls: urls.txt
+          flags: "-severity critical,high,medium,low -stats"
+          github-report: true
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: GitHub Workflow artifacts
+        uses: actions/upload-artifact@v2
+        with:
+          name: nuclei.log
+          path: nuclei.log
+
+      - name: GitHub Security Dashboard Alerts update
+        uses: github/codeql-action/upload-sarif@v2
+        with:
+          sarif_file: nuclei.sarif
