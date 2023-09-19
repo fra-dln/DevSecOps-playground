@@ -1,4 +1,4 @@
-name: SAST scan with Horusec
+name: Horusec SAST scan
 on: workflow_dispatch
 
 jobs:
