@@ -1,0 +1,14 @@
+name: Build code, run unit test, run SAST, SCA, DAST security scans
+on: workflow_dispatch
+
+jobs:
+  snyk-sca-scan:
+    runs-on: ubuntu-latest
+    name: Snyk SCA scan on the source code
+    steps:
+      - uses: actions/checkout@master
+      - name: RunSnyk to check for vulnerabilities
+        uses: snyk/actions/maven@master
+        continue-on-error: true
+        env:
+          SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
