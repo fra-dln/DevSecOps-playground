@@ -76,6 +76,11 @@
             <artifactId>nd4j-common</artifactId>
             <version>1.0.0-beta2</version>
         </dependency>
+        <dependency>
+            <groupId>org.eclipse.m2e</groupId>
+            <artifactId>lifecycle-mapping</artifactId>
+            <version>1.0.0</version>
+        </dependency>
 
 <!--#Change 1 - Changes for Unit Test Coverage Percentage Update on SonarCloud Dashboard
 #By ASecurityGuru
