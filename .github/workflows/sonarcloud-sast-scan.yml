@@ -12,6 +12,7 @@ jobs:
         with:
           java-version: '17'
           distribution: 'zulu'
+          depth: false #prevent shallow clones
           cache: maven
       - name: Build with Maven cloud
         run:  mvn -B verify sonar:sonar -Dsonar.projectKey=devsecops-playground_playground -Dsonar.organization=devsecops-playground -Dsonar.host.url=https://sonarcloud.io -Dsonar.token=$SONAR_TOKEN        
