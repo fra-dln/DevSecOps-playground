@@ -27,18 +27,7 @@ jobs:
        # uses: actions/download-artifact@v3
         #with:
          # name: horusec-report
-         
-      - uses: actions/checkout@v2
-      - name: Read/Write data into README
-        uses: eddiejaoude/github-actions-reader-writer@v0.1
-        with:
-          json-file-path: ./output.json
-          github-token: ${{ secrets.GITHUB_TOKEN }}
-          columns: 2
-          object-field-names: '[ "key", "value" ]'
-          file-to-use: 'README.md'
-          html-cell: '<td align="center"><p><a href="https://github.com/{{ githubUsername }}">{{ name }}</a></p><img src="{{ imageUrl }}" /><p><a href="https://github.com/EddieJaoudeCommunity/awesome-github-profiles/issues/{{ issueNumber }}">(:100: give your vote)</a></p></td>'
-      
+              
       - name: create an issue
         uses: JasonEtco/create-an-issue@v2
         env:
