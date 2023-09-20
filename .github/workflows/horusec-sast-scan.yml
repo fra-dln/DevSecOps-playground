@@ -1,5 +1,8 @@
 name: Horusec SAST scan
 on: workflow_dispatch
+permissions: 
+  contents: read
+  issues: write
 
 jobs:
   horusec-sast-scan:
@@ -20,10 +23,10 @@ jobs:
           name: horusec-report
           path: ./output.json
         
-      - name: Download a single artifact
-        uses: actions/download-artifact@v3
-        with:
-          name: horusec-report
+      #- name: Download a single artifact
+       # uses: actions/download-artifact@v3
+        #with:
+         # name: horusec-report
       
       - name: create an issue
         uses: JasonEtco/create-an-issue@v2
