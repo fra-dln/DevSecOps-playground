@@ -18,7 +18,7 @@ jobs:
         uses: actions/upload-artifact@v3
         with:
           name: horusec-report
-          path: ./github/workspace/output.json
+          path: /github/workspace/output.json
         
 
   
