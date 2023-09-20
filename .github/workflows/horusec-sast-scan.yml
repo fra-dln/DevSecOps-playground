@@ -20,5 +20,15 @@ jobs:
           name: horusec-report
           path: ./output.json
         
-
+      - name: Download a single artifact
+        uses: actions/download-artifact@v3
+        with:
+          name: horusec-report
+      
+      - name: create an issue
+        uses: dacbd/create-issue-action@main
+        with:
+          token: ${{ github.token }}
+          title: Horusec issue
+          body: ${{horusec-report}}
   
