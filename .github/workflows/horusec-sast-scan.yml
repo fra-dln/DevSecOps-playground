@@ -13,3 +13,12 @@ jobs:
         uses: fike/horusec-action@v0.2.2
         with:
           arguments: -c=horusec-config.json -p ./ -e="false" -o="json" -O="./output.json"
+      
+      - name: Archive code coverage results
+        uses: actions/upload-artifact@v3
+        with:
+          name: horusec-report
+          path: ./github/workspace/output.json
+        
+
+  
