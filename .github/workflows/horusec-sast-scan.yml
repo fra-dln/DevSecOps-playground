@@ -14,4 +14,4 @@ jobs:
         with:
           arguments: -c=horusec-config.json -p ./ -e="false" -o="json" -O="./output.json"
       - run: |
-          echo "${{./output.json}}"
+          echo "${{output.json}}"
