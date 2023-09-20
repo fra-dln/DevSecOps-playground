@@ -16,12 +16,6 @@ jobs:
         uses: fike/horusec-action@v0.2.2
         with:
           arguments: -c=horusec-config.json -p ./ -e="false" -w="true" -j="true" -o="json" -O="./output.json"
-
-      - name: run-ls
-        run: |
-          cat tmp
-          ls
-        shell: bash
             
       - name: Archive code coverage results
         uses: actions/upload-artifact@v3
@@ -33,11 +27,18 @@ jobs:
        # uses: actions/download-artifact@v3
         #with:
          # name: horusec-report
+         
+      - name: json to md conversion
+        uses: buildingcash/json-to-markdown-table-action@v1
+        id: table
+        with:
+          json: output.json
+      - run: echo ${{ steps.table.outputs.table }}
       
       - name: create an issue
         uses: JasonEtco/create-an-issue@v2
         env:
           GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
         with:
-          filename: output.json
+          filename: ${{ steps.table.outputs.table }}
   
