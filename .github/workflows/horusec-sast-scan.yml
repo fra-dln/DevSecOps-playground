@@ -19,7 +19,8 @@ jobs:
 
       - name: run-ls
         run: |
-         ls
+          cd tmp
+          ls
         shell: bash
             
       - name: Archive code coverage results
