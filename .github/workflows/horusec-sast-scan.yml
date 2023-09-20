@@ -28,12 +28,16 @@ jobs:
         #with:
          # name: horusec-report
          
-      - name: json to md conversion
-        uses: buildingcash/json-to-markdown-table-action@v1
-        id: table
+      - uses: actions/checkout@v2
+      - name: Read/Write data into README
+        uses: eddiejaoude/github-actions-reader-writer@v0.1
         with:
-          json: ${{steps.run_horusec.output.json}}
-      - run: echo ${{ steps.table.outputs.table }}
+          json-file-path: 'output.json'
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          #columns: 3
+          object-field-names: '[ "githubUsername", "name", "imageUrl", "issueNumber" ]'
+          file-to-use: 'README.md'
+          html-cell: '<td align="center"><p><a href="https://github.com/{{ githubUsername }}">{{ name }}</a></p><img src="{{ imageUrl }}" /><p><a href="https://github.com/EddieJaoudeCommunity/awesome-github-profiles/issues/{{ issueNumber }}">(:100: give your vote)</a></p></td>'
       
       - name: create an issue
         uses: JasonEtco/create-an-issue@v2
