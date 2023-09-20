@@ -19,7 +19,6 @@ jobs:
 
       - name: run-ls
         run: |
-         cd ./tmp/horusec/
          ls
         shell: bash
             
