@@ -19,7 +19,7 @@ jobs:
 
       - name: run-ls
         run: |
-          cd tmp
+          cat tmp
           ls
         shell: bash
             
