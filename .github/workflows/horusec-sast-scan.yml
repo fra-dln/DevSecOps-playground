@@ -13,11 +13,22 @@ jobs:
         uses: fike/horusec-action@v0.2.2
         with:
           arguments: -c=horusec-config.json -p ./ -e="false" -o="json" -O="./output.json"
-
-      - name: create an issue
-        uses: dacbd/create-issue-action@main
+            
+      - name: Archive code coverage results
+        uses: actions/upload-artifact@v3
         with:
-          token: ${{ github.token }}
-          title: Horusec issue
-          body: ${{./output.json}}
+          name: horusec-report
+          path: ./output.json
+        
+      - name: Download a single artifact
+        uses: actions/download-artifact@v3
+        with:
+          name: horusec-report
+      
+      - name: create an issue
+        uses: JasonEtco/create-an-issue@v2
+        env:
+          GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
+        with:
+          filename: output.json
   
