@@ -13,5 +13,3 @@ jobs:
         uses: fike/horusec-action@v0.2.2
         with:
           arguments: -c=horusec-config.json -p ./ -e="false" -o="json" -O="./output.json"
-      - run: |
-          echo "${{output.json}}"
