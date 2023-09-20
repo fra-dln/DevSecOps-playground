@@ -1,7 +1,7 @@
 name: Create Issue
 
 on:
-  push:
+  pull_request:
     types: [opened]
 
 jobs:
