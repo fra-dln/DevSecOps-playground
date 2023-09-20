@@ -28,10 +28,10 @@ jobs:
         #with:
          # name: horusec-report
               
-      - name: create an issue
-        uses: JasonEtco/create-an-issue@v2
-        env:
-          GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
-        with:
-          filename: ${{ steps.table.outputs.table }}
+      #- name: create an issue
+      #  uses: JasonEtco/create-an-issue@v2
+      #  env:
+      #    GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
+      #  with:
+      #    filename: ${{ steps.table.outputs.table }}
   
