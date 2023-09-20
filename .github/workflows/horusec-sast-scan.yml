@@ -32,7 +32,7 @@ jobs:
         uses: buildingcash/json-to-markdown-table-action@v1
         id: table
         with:
-          json: ${{steps.run_horusec.output}}
+          json: ${{steps.run_horusec.output.json}}
       - run: echo ${{ steps.table.outputs.table }}
       
       - name: create an issue
