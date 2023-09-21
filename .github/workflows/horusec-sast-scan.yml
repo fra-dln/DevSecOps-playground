@@ -33,13 +33,13 @@ jobs:
         run: |
           value=`cat ./output.json`
           echo The result is $value
-
+          
       - name: create an issue
-        uses: dacbd/create-issue-action@main
+        uses: JasonEtco/create-an-issue@v2
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
-          token: ${{ github.token }}
-          title: Horusec issue
-          body: ${{./output.json}}
+          filename: $output.md
         
       #- name: Download a single artifact
       #  uses: actions/download-artifact@v3
