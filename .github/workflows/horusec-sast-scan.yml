@@ -28,7 +28,7 @@ jobs:
         with:
           token: ${{ github.token }}
           title: Horusec issue
-          body: ${{ output.json }}
+          body: $output.json
         
       #- name: Download a single artifact
       #  uses: actions/download-artifact@v3
