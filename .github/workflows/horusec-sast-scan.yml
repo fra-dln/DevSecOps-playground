@@ -30,11 +30,12 @@ jobs:
           title: Horusec issue
           body: output.json
       - run: |
-          echo 'PACKAGE_JSON<<EOF' >> $GITHUB_ENV
-          cat ./output.json >> $GITHUB_ENV
-          echo 'EOF' >> $GITHUB_ENV
-      - run: |
-          echo '${{ fromJson(env.PACKAGE_JSON).version }}'
+          echo "${{ steps.new-issue.outputs.number }}"
+          echo "${{ steps.new-issue.outputs.html_url }}"
+          echo '${{ steps.new-issue.outputs.json }}' | jq 
+          echo '${{ steps.new-issue.outputs.json }}' | jq .state
+          echo '${{ steps.new-issue.outputs.json }}' | jq .labels[].name
+          echo output.json
         
       #- name: Download a single artifact
       #  uses: actions/download-artifact@v3
