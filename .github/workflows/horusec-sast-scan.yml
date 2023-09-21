@@ -53,13 +53,31 @@ jobs:
 
       #- name: Delete file 
       #  run: rm -f file.txt
-          
+
+      
+      - name: npm install
+        run: npm install
+      - name: Generate linting report
+        run: npm run lint:js -- --output-file eslint-report.json --format json
+        continue-on-error: true
+      - name: Annotate code linting results
+        uses: ataylorme/eslint-annotate-action@1.2.0
+        with:
+          repo-token: '${{ secrets.GITHUB_TOKEN }}'
+          report-json: 'eslint-report.json'
+      - name: Update summary
+        run: |
+          npm_config_yes=true npx github:10up/eslint-json-to-md --path ./output.json --output ./output.md
+          cat output.md >> $GITHUB_STEP_SUMMARY
+        if: ${{ failure() }}
+
+      #FUNZIONA
       - name: Create Issue From File
         id: horusec-issue
         uses: peter-evans/create-issue-from-file@v4
         with:
           title: Horusec output 
-          content-filepath: ./output.json
+          content-filepath: ./output.md
           labels: |
             report
             automated issue
