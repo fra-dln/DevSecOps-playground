@@ -59,7 +59,7 @@ jobs:
         uses: peter-evans/create-issue-from-file@v4
         with:
           title: Horusec output 
-          content-filepath: ./output.md
+          content-filepath: ./output.json
           labels: |
             report
             automated issue
