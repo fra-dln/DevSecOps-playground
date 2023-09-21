@@ -38,26 +38,31 @@ jobs:
         with:
           name: horusec-report
           
-      - name: Print the final result
+      - name: Print the json result
         shell: bash
         run: |
           value=`cat ./output.json`
           echo The result is $value
 
-      - name: Rename file 
+      - name: Rename file e print it
         run: |
           mv ./output.json ./output.md
           ls
+          value=`cat ./output.md`
+          echo The result is $value
 
       #- name: Delete file 
       #  run: rm -f file.txt
           
-      - name: create an issue
-        uses: JasonEtco/create-an-issue@v2
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - name: Create Issue From File
+        id: horusec-issue
+        uses: peter-evans/create-issue-from-file@v4
         with:
-          filename: issue_template.md
+          title: Horusec output 
+          content-filepath: ./output.md
+          labels: |
+            report
+            automated issue
     
 
     
