@@ -22,11 +22,17 @@ jobs:
         with:
           name: horusec-report
           path: ./output.json
+          retention-days: 5
 
       - name: Download a single artifact
         uses: actions/download-artifact@v3
         with:
           name: horusec-report
+      - name: Print the final result
+        shell: bash
+        run: |
+          value=`cat ./output.json`
+          echo The result is $value
 
       - name: create an issue
         uses: dacbd/create-issue-action@main
