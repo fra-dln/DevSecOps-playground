@@ -22,12 +22,15 @@ jobs:
         with:
           name: horusec-report
           path: ./output.json
-          retention-days: 5
+          #retention-days: 5
 
       - name: Download a single artifact
         uses: actions/download-artifact@v3
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           name: horusec-report
+          
       - name: Print the final result
         shell: bash
         run: |
