@@ -44,12 +44,12 @@ jobs:
           value=`cat ./output.json`
           echo The result is $value
 
-      - name: Rename file e print it
-        run: |
-          mv ./output.json ./output.md
-          ls
-          value=`cat ./output.md`
-          echo The result is $value
+      #- name: Rename file .json to .md e print it
+      #  run: |
+      #    mv ./output.json ./output.md
+      #    ls
+      #    value=`cat ./output.md`
+      #    echo The result is $value
 
       #- name: Delete file 
       #  run: rm -f file.txt
