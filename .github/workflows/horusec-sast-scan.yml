@@ -22,16 +22,23 @@ jobs:
         with:
           name: horusec-report
           path: ./output.json
+
+      - name: create an issue
+        uses: dacbd/create-issue-action@main
+        with:
+          token: ${{ github.token }}
+          title: Horusec issue
+          body: output.json
         
       #- name: Download a single artifact
-       # uses: actions/download-artifact@v3
-        #with:
-         # name: horusec-report
+      #  uses: actions/download-artifact@v3
+      #  with:
+      #   name: horusec-report
               
-      - name: create an issue
-        uses: JasonEtco/create-an-issue@v2
-        env:
-          GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
-        with:
-          filename: ${{ steps.table.outputs.table }}
+      #- name: create an issue
+      #  uses: JasonEtco/create-an-issue@v2
+      #  env:
+      #    GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
+      #  with:
+      #    filename: $output.json
   
