@@ -43,14 +43,19 @@ jobs:
         run: |
           value=`cat ./output.json`
           echo The result is $value
+
+      - name: Rename file 
+        run: mv ./output.json ./output.md
+
+      #- name: Delete file 
+      #  run: rm -f file.txt
           
       - name: create an issue
         uses: JasonEtco/create-an-issue@v2
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
-          name: horusec-report
-          filename: ./output.json
+          filename: ./output.md
     
 
     
