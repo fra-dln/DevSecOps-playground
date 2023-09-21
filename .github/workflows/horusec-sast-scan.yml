@@ -28,14 +28,7 @@ jobs:
         with:
           token: ${{ github.token }}
           title: Horusec issue
-          body: output.json
-      - run: |
-          echo "${{ steps.new-issue.outputs.number }}"
-          echo "${{ steps.new-issue.outputs.html_url }}"
-          echo '${{ steps.new-issue.outputs.json }}' | jq 
-          echo '${{ steps.new-issue.outputs.json }}' | jq .state
-          echo '${{ steps.new-issue.outputs.json }}' | jq .labels[].name
-          echo output.json
+          body: ${{ output.json }}
         
       #- name: Download a single artifact
       #  uses: actions/download-artifact@v3
