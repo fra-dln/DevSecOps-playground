@@ -49,7 +49,8 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
-          filename: $output.json
+          name: horusec-report
+          filename: ./output.json
     
 
     
