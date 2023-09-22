@@ -1,4 +1,4 @@
-name: Horusec SAST scan
+name: Horusec SAST scan funzionante
 on: workflow_dispatch
 permissions: 
   contents: read
