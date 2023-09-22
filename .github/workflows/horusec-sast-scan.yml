@@ -25,7 +25,8 @@ jobs:
           retention-days: 5
 
       - name: Set JSON Content as Environment Variable
-        run: echo "JSON_CONTENT=$(cat horusec-output.json)" >> $GITHUB_ENV
+        run: |
+          echo "JSON_CONTENT=$(cat horusec-output.json)" >> $GITHUB_ENV
 
   download-artifacts-e-create-issue:
     runs-on: ubuntu-latest
