@@ -24,7 +24,7 @@ jobs:
           path: horusec-output.json
           retention-days: 5
 
-      - name: Set Json as EV
+      - name: Set JSON Content as Environment Variable
         run: |
           JSON_CONTENT=$(cat horusec-output.json)
           echo "JSON_CONTENT=$JSON_CONTENT" >> $GITHUB_ENV
