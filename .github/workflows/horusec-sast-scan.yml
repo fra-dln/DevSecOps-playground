@@ -15,7 +15,12 @@ jobs:
         id: run_horusec
         uses: fike/horusec-action@v0.2.2
         with:
-          arguments: -c=horusec-config.json -p ./ -e="false" -w="true" -j="true" -o="json" -O="horusec-output.json"
+          horusec_version: "2.8.0"
+          config_file: horusec-config.json
+          path: ./
+          enable_http: "false"
+          enable_workspace: "true"
+          json_output: "horusec-output.json"
             
       - name: Archive code coverage results
         uses: actions/upload-artifact@v3
