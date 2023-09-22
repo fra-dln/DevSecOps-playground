@@ -19,6 +19,9 @@
 # finishedAt
   2023-09-21T15:46:05.406124127Z
 # analysisVulnerabilities
+
+---
+
 ## analysisID
     3b6c27ec-52bf-415f-9d96-4c835a108118
 ## createdAt
@@ -54,6 +57,9 @@ The software contains hard-coded credentials, such as a password or cryptographi
 ### deprecatedHashes
       a6e0fd573f82ff3e1a5b9b5dd417f2e4683446ab0d60695e462f7ea7b9720124
       e355999de739c180499198fb154cba690ec5b71bc201af954099ec6e1ffcc4fd
+
+---
+
 ## analysisID
     3b6c27ec-52bf-415f-9d96-4c835a108118
 ## createdAt
@@ -89,6 +95,9 @@ The software contains hard-coded credentials, such as a password or cryptographi
 ### deprecatedHashes
       48f0fd02527783cad981acb160f826e837075728eff515751a72bd66253b9751
       a0eddc9e0f37d39a0e42d5c78423a03ad415981602faa62288c35c8cf9904a8b
+
+---
+
 ## analysisID
     3b6c27ec-52bf-415f-9d96-4c835a108118
 ## createdAt
@@ -124,6 +133,9 @@ The software contains hard-coded credentials, such as a password or cryptographi
 ### deprecatedHashes
       3c7e13a211af5a5c4db80fdb418b27615e9a2ad7ece794b6b4ecc6a10d10c002
       8d4e58acc406d9c663c6863123824a3db4302630370814dd93033f247d19e3e8
+
+---
+
 ## analysisID
     3b6c27ec-52bf-415f-9d96-4c835a108118
 ## createdAt
@@ -159,6 +171,9 @@ The software contains hard-coded credentials, such as a password or cryptographi
 ### deprecatedHashes
       ffbabdf157236ca88a399953158e9fbbe284c769aef575275c7ce6e3206d87dd
       57ef3dcf82d1f0d4afeb996b25a80529a45646419fcb80f24b446e2fc524a311
+
+---
+
 ## analysisID
     3b6c27ec-52bf-415f-9d96-4c835a108118
 ## createdAt
@@ -194,6 +209,9 @@ alert(...) as well as confirm(...) and prompt(...) can be useful for debugging d
 ### deprecatedHashes
       7e9a52dd27636fc3a3a37490901514850be08e845f88a68a010432cf4e459d05
       dccada7c53d40e98a4341fc89ca45762d34b1134d70c6d92d0f08387ab76527d
+
+---
+
 ## analysisID
     3b6c27ec-52bf-415f-9d96-4c835a108118
 ## createdAt
@@ -229,6 +247,9 @@ alert(...) as well as confirm(...) and prompt(...) can be useful for debugging d
 ### deprecatedHashes
       6c4b621a77c454e5a2108c25257f0d4d4e7e4e3b6b78f84f87a75a635e474ef0
       dbfa3e4ea283b884f4e4d47b1e84aea2a4c7bd0e63983e229a791cb60ddbdaad
+
+---
+
 ## analysisID
     3b6c27ec-52bf-415f-9d96-4c835a108118
 ## createdAt
@@ -264,6 +285,9 @@ An attacker might be able to detect the value of the secret hash due to the expo
 ### deprecatedHashes
       52abf513f6949456bd0f3d730f0a2df94e2d5abb98c9d7cf2d4f5876fc358760
       a734ae48a87fa1a518a4d9edc07ba75f2fb89f775f0991e56e03d434e273e266
+
+---
+
 ## analysisID
     3b6c27ec-52bf-415f-9d96-4c835a108118
 ## createdAt
@@ -299,6 +323,9 @@ The sensitive information may be valuable information on its own (such as a pass
 ### deprecatedHashes
       fc688d5c01b580ffa63f60689686f2ae657aea3570efc1bf5ab06d5959ef4447
       074b69e2b05b87bdeaa97deaf0b27749ffbe95d0c60ed2d27cd63f8670ec4626
+
+---
+
 ## analysisID
     3b6c27ec-52bf-415f-9d96-4c835a108118
 ## createdAt
@@ -334,6 +361,9 @@ The sensitive information may be valuable information on its own (such as a pass
 ### deprecatedHashes
       d8eff110cdba0d2bf35de82aa02d1a5ab1c7f367f2a552a57983e25e32b718a7
       fa96a28de70691efbb0eccb831d05ec5cea8520b4e3e5e7836c49e61d2422118
+
+---
+
 ## analysisID
     3b6c27ec-52bf-415f-9d96-4c835a108118
 ## createdAt
@@ -369,6 +399,9 @@ The input values included in SQL queries need to be passed in safely. Bind varia
 ### deprecatedHashes
       28fc7b5fb3dc6b4b07309efb9aa9904561fb3506a4f0a3f4270981c0d8b638ce
       be2aec3219f0c795367d846c85b513d936149be3b8abcfcf849cf03c742eb113
+
+---
+
 ## analysisID
     3b6c27ec-52bf-415f-9d96-4c835a108118
 ## createdAt
@@ -404,6 +437,9 @@ CVE-2022-21724 pgjdbc instantiates plugin instances based on class names provide
 ### deprecatedHashes
       bd6c998f994b92540ed9b9a8ea257a01b6226223c89c82517fec51a67c583b47
       d7c3aa707c95c6bdeba5afa63145bc117d085b1a138d54b9add8b2e372ee171e
+
+---
+
 ## analysisID
     3b6c27ec-52bf-415f-9d96-4c835a108118
 ## createdAt
@@ -439,6 +475,9 @@ The sensitive information may be valuable information on its own (such as a pass
 ### deprecatedHashes
       add21ab1083092d9c83be0c1ff61365f740d4e30fb88555a34c8439516972d05
       d2970d492f6a6eebee92760f7ee33e770b61a209c050e2fbb3797f6412c12b98
+
+---
+
 ## analysisID
     3b6c27ec-52bf-415f-9d96-4c835a108118
 ## createdAt
@@ -474,6 +513,9 @@ The sensitive information may be valuable information on its own (such as a pass
 ### deprecatedHashes
       d1ab501e8d074b6fbdd9ba18ae0ff1319b5639f15742727d8c16489e18a54b7c
       65a32c3a27236ff3e50e88898efc4cc454efbb8d8e9f7539752b73a345fdede8
+
+---
+
 ## analysisID
     3b6c27ec-52bf-415f-9d96-4c835a108118
 ## createdAt
@@ -509,6 +551,9 @@ The sensitive information may be valuable information on its own (such as a pass
 ### deprecatedHashes
       8061f4e3d63a7005f71c497222079dcfe5595ff7b9b2a1547413b02e28feef2e
       2168ed7180aa5d6e11c4db997abda527b9ec19fe3bc2e826eeebe3c0beafac85
+
+---
+
 ## analysisID
     3b6c27ec-52bf-415f-9d96-4c835a108118
 ## createdAt
