@@ -45,6 +45,16 @@ jobs:
           value=`cat ./output.json`
           echo The result is $value
 
+      - name: Set Json as EV
+        run: |
+          JSON_CONTENT = $(cat ./output.json)
+          echo "JSON_CONTENT=$JSON_CONTENT" >> $GITHUB_ENV
+
+      - name: Convert Json to md
+        uses: buildingcash/json-to-markdown-table-action@v1
+        with:
+          json: ${{ env.JSON_CONTENT }}
+
       #- name: Rename file .json to .md e print it
       #  run: |
       #    mv ./output.json ./output.md
