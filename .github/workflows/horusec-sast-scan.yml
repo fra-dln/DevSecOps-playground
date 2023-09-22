@@ -45,15 +45,15 @@ jobs:
           value=`cat horusec-output.json`
           echo The result is $value
 
-      - name: Set Json as EV
-        run: |
-          JSON_CONTENT=$(cat horusec-output.json)
-          echo "JSON_CONTENT=$JSON_CONTENT" >> $GITHUB_ENV
+      #- name: Set Json as EV
+      #  run: |
+      #    JSON_CONTENT=$(cat horusec-output.json)
+      #    echo "JSON_CONTENT=$JSON_CONTENT" >> $GITHUB_ENV
 
       - name: Convert Json to md
         uses: buildingcash/json-to-markdown-table-action@v1
         with:
-          json: ${{ env.JSON_CONTENT }}
+          json: horusec-output.json
 
       #- name: Rename file .json to .md e print it
       #  run: |
