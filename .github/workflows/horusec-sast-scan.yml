@@ -25,9 +25,7 @@ jobs:
           retention-days: 5
 
       - name: Set JSON Content as Environment Variable
-        run: |
-          JSON_CONTENT=$(cat horusec-output.json)
-          echo "JSON_CONTENT=$JSON_CONTENT" >> $GITHUB_ENV
+        run: echo "JSON_CONTENT=$(cat horusec-output.json)" >> $GITHUB_ENV
 
   download-artifacts-e-create-issue:
     runs-on: ubuntu-latest
@@ -50,7 +48,7 @@ jobs:
           value=`cat horusec-output.json`
           echo The result is $value
           
-      - name: Convert Json to md
+      - name: Convert JSON to Markdown
         uses: buildingcash/json-to-markdown-table-action@v1
         with:
           json: ${{ env.JSON_CONTENT }}
