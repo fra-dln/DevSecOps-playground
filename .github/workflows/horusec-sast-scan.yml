@@ -15,13 +15,13 @@ jobs:
         id: run_horusec
         uses: fike/horusec-action@v0.2.2
         with:
-          arguments: -c=horusec-config.json -p ./ -e="false" -w="true" -j="true" -o="json" -O="./output.json"
+          arguments: -c=horusec-config.json -p ./ -e="false" -w="true" -j="true" -o=horusec-output.json
             
       - name: Archive code coverage results
         uses: actions/upload-artifact@v3
         with:
           name: horusec-report
-          path: ./output.json
+          path: horusec-output.json
           retention-days: 5
 
   download-artifacts-e-create-issue:
@@ -42,12 +42,12 @@ jobs:
         id: stampalog
         shell: bash
         run: |
-          value=`cat ./output.json`
+          value=`cat horusec-output.json`
           echo The result is $value
 
       - name: Set Json as EV
         run: |
-          JSON_CONTENT = $(cat ./output.json)
+          JSON_CONTENT = $(cat horusec-output.json)
           echo "JSON_CONTENT=$JSON_CONTENT" >> $GITHUB_ENV
 
       - name: Convert Json to md
@@ -80,7 +80,7 @@ jobs:
         uses: peter-evans/create-issue-from-file@v4
         with:
           title: Horusec output 
-          content-filepath: ./output.json
+          content-filepath: horusec-output.json
           labels: |
             report
             automated issue
