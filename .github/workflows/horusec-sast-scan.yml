@@ -55,22 +55,22 @@ jobs:
       #- name: Delete file 
       #  run: rm -f file.txt
 
-      - name: stampa json
-        run: echo "${{ steps.stampalog.outputs }}"
+      #- name: stampa json
+      #  run: echo "${{ steps.stampalog.outputs }}"
 
       #Test Json to table md
-      - uses: buildingcash/json-to-markdown-table-action@v1
-        id: table
-        with:
-          json: ${{ steps.stampalog.outputs }}
-      - run: echo ${{ steps.table.outputs.table }}
+      #- uses: buildingcash/json-to-markdown-table-action@v1
+      #  id: table
+      #  with:
+      #    json: ${{ steps.stampalog.outputs }}
+      #- run: echo ${{ steps.table.outputs.table }}
 
       - name: Create Issue From File
         id: horusec-issue
         uses: peter-evans/create-issue-from-file@v4
         with:
           title: Horusec output 
-          content-filepath: ${{ steps.table.outputs.table }}
+          content-filepath: ./output.json
           labels: |
             report
             automated issue
