@@ -27,8 +27,7 @@ jobs:
       - name: Set JSON Content as Environment Variable
         run: |
           {
-            JSON_CONTENT=$(cat horusec-output.json)
-            echo "JSON_CONTENT=$JSON_CONTENT"
+            echo "JSON_CONTENT=$(cat horusec-output.json)"
           } >> "$GITHUB_ENV"
 
   download-artifacts-e-create-issue:
