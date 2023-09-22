@@ -55,6 +55,11 @@ jobs:
       #- name: Delete file 
       #  run: rm -f file.txt
 
+      - name: Print the json resultx2
+        shell: bash
+        run: |
+          echo ${{ steps.stampalog.outputs }}
+
       #Test Json to table md
       - uses: buildingcash/json-to-markdown-table-action@v1
         id: table
