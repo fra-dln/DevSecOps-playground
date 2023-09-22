@@ -24,11 +24,12 @@ jobs:
           path: horusec-output.json
           retention-days: 5
 
-      - name: Set JSON Content as Environment Variable
-        run: |
-          {
-            echo "JSON_CONTENT=$(cat horusec-output.json)"
-          } >> "$GITHUB_ENV"
+      - name: JSON to variables
+        uses: rgarcia-phi/json-to-variables@v1.1.0
+        with:
+          filename: 'horusec-output.json'
+          prefix: horusec-output
+          masked: true
 
   download-artifacts-e-create-issue:
     runs-on: ubuntu-latest
@@ -54,7 +55,7 @@ jobs:
       - name: Convert JSON to Markdown
         uses: buildingcash/json-to-markdown-table-action@v1
         with:
-          json: ${{ env.JSON_CONTENT }}
+          json: ${{ env.horusec-output }}
 
       #- name: Rename file .json to .md e print it
       #  run: |
