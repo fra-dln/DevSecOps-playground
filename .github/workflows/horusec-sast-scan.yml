@@ -53,7 +53,7 @@ jobs:
       - name: Convert Json to md
         uses: buildingcash/json-to-markdown-table-action@v1
         with:
-          json: $(cat horusec-output.json)
+          json: ${{ cat horusec-output.json }}
 
       #- name: Rename file .json to .md e print it
       #  run: |
