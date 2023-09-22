@@ -54,12 +54,19 @@ jobs:
       #- name: Delete file 
       #  run: rm -f file.txt
 
+      #Test Json to table md
+      - uses: buildingcash/json-to-markdown-table-action@v1
+        id: table
+        with:
+          json: $value
+      - run: echo ${{ steps.table.outputs.table }}
+
       - name: Create Issue From File
         id: horusec-issue
         uses: peter-evans/create-issue-from-file@v4
         with:
           title: Horusec output 
-          content-filepath: ./output.json
+          content-filepath: ${{ steps.table.outputs.table }}
           labels: |
             report
             automated issue
