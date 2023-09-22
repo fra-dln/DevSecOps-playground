@@ -47,7 +47,7 @@ jobs:
 
       - name: Set Json as EV
         run: |
-          JSON_CONTENT = $(cat horusec-output.json)
+          JSON_CONTENT=$(cat horusec-output.json)
           echo "JSON_CONTENT=$JSON_CONTENT" >> $GITHUB_ENV
 
       - name: Convert Json to md
