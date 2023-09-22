@@ -39,6 +39,7 @@ jobs:
           name: horusec-report
           
       - name: Print the json result
+        id: stampalog
         shell: bash
         run: |
           value=`cat ./output.json`
@@ -58,7 +59,7 @@ jobs:
       - uses: buildingcash/json-to-markdown-table-action@v1
         id: table
         with:
-          json: $value
+          json: ${{ steps.stampalog.outputs.value }}
       - run: echo ${{ steps.table.outputs.table }}
 
       - name: Create Issue From File
