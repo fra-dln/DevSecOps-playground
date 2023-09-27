@@ -1,0 +1,27 @@
+[
+  {
+     "id": "id",
+     "name": "Vulnerability Name",
+     "description": "Description of the vulnerability with CWE link",
+     "language": "Vulnerability language choice one into: C#, Dart, Java, Kotlin, YAML, Leaks, JavaScript, Nginx",
+     "severity": "Vulnerability severity choice one into: CRITICAL, HIGH, MEDIUM, LOW, UNKNOWN, INFO",
+     "confidence": "Vulnerability confidence choice one into: HIGH, MEDIUM, LOW",
+     "type": "Vulnerability math type choice one into: Regular, OrMatch, AndMatch, NotMatch",
+     "expressions": [
+        "Regex to respective found vulnerability"
+     ]
+  },
+  {
+     "id": "837c504d-38b4-4ea6-987b-d91e92ac86a2",
+     "name": "Cookie Without HttpOnly Flag",
+     "description": "It is recommended to specify the HttpOnly flag to new cookie. For more information access: (https://security-code-scan.github.io/#SCS0009) or (https://cwe.mitre.org/data/definitions/1004.html).",
+     "language": "C#",
+     "severity": "MEDIUM",
+     "confidence": "LOW",
+     "type": "OrMatch",
+     "expressions": [
+          "httpOnlyCookies\\s*=\\s*['|\"]false['|\"]",
+"(new\\sHttpCookie\\(.*\\))(.*|\n)*(\\.HttpOnly\\s*=\\s*false)",
+"(new\\sHttpCookie)(([^H]|H[^t]|Ht[^t]|Htt[^p]|Http[^O]|HttpO[^n]|HttpOn[^l]|HttpOnl[^y])*)(})"
+     ]
+  }
