@@ -27,8 +27,15 @@ jobs:
       - name: Archive code coverage results
         uses: actions/upload-artifact@v3
         with:
-          name: horusec-report
-          path: horusec-output.json
+          name: horusec-report-sq
+          path: horusec-output_sq.json
+          retention-days: 5
+
+      - name: Archive code coverage results
+        uses: actions/upload-artifact@v3
+        with:
+          name: horusec-report-json
+          path: horusec-output_json.json
           retention-days: 5
 
   download-artifacts-e-create-issue:
@@ -43,7 +50,14 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
-          name: horusec-report
+          name: horusec-report-json
+
+      - name: Download the artifact
+        uses: actions/download-artifact@v3
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          name: horusec-report-sq
           
       #- name: Print the json result
       #  id: stampalog
