@@ -20,7 +20,7 @@
         "shell": "",
         "yaml": ""
     },
-    "horusecCliCustomRulesPath": "./tmp",
+    "horusecCliCustomRulesPath": "./horusec-custom-rules.json",
     "horusecCliDisableDocker": false,
     "horusecCliEnableCommitAuthor": false,
     "horusecCliEnableGitHistoryAnalysis": false,
