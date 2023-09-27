@@ -20,12 +20,12 @@
         "shell": "",
         "yaml": ""
     },
-    "horusecCliCustomRulesPath": "",
+    "horusecCliCustomRulesPath": "./tmp",
     "horusecCliDisableDocker": false,
     "horusecCliEnableCommitAuthor": false,
     "horusecCliEnableGitHistoryAnalysis": false,
-    "horusecCliEnableInformationSeverity": false,
-    "horusecCliEnableOwaspDependencyCheck": false,
+    "horusecCliEnableInformationSeverity": true,
+    "horusecCliEnableOwaspDependencyCheck": true,
     "horusecCliFalsePositiveHashes": [],
     "horusecCliLogFilePath": "./tmp",
     "horusecCliFilesOrPathsToIgnore": 
@@ -33,7 +33,7 @@
         "*tmp*",
         "**/.vscode/**"
     ],
-    "horusecCliEnableShellcheck": false,
+    "horusecCliEnableShellcheck": true,
     "horusecCliFilterPath": "",
     "horusecCliHeaders": {},
     "horusecCliHorusecApiUri": "http://0.0.0.0:8000",
