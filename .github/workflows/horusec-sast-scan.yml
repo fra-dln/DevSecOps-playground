@@ -52,10 +52,10 @@ jobs:
           value=`cat horusec-output.json`
           echo The result is $value
           
-      - name: Convert JSON to Markdown
-        uses: buildingcash/json-to-markdown-table-action@v1
-        with:
-          json: ${{ env.horusec-output }}
+      #- name: Convert JSON to Markdown
+      #  uses: buildingcash/json-to-markdown-table-action@v1
+      #  with:
+      #    json: ${{ env.horusec-output }}
 
       #- name: Rename file .json to .md e print it
       #  run: |
