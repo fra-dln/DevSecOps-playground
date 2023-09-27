@@ -15,7 +15,7 @@ jobs:
         id: run_horusec_sq
         uses: fike/horusec-action@v0.2.2
         with:
-          arguments: -c="horusec-config.json" -p="./" -e="false" -w="true" -j="true" -o="sonarqube" -O="horusec-output_sq.json"
+          arguments: --config-file-path=horusec-config.json -p="./" -e="false" -w="true" -j="true" -o="sonarqube" -O="horusec-output_sq.json"
 
       - name: Run Horusec custom log
         id: run_horusec_json
