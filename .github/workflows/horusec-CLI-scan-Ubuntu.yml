@@ -55,13 +55,3 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           name: horusec-report-json
-
-      - name: Create Issue From File
-        id: horusec-issue-json
-        uses: peter-evans/create-issue-from-file@v4
-        with:
-          title: Horusec output Json
-          content-filepath: horusec-output_json.json
-          labels: |
-            report
-            automated issue
