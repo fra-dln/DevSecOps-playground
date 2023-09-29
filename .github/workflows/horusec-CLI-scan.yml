@@ -1,4 +1,4 @@
-name: Horusec SAST scan
+name: Horusec CLI security scan
 on: workflow_dispatch
 permissions: 
   contents: read
