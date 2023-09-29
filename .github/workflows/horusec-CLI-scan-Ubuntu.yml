@@ -32,7 +32,7 @@ jobs:
           sudo docker run hello-world
           curl -fsSL https://raw.githubusercontent.com/ZupIT/horusec/main/deployments/scripts/install.sh | bash -s latest-beta
           sudo horusec version
-          sudo horusec start --config-file-path=horusec-config.json
+          sudo horusec start --config-file-path=horusec-config.json -p="./" -e="false" --enable-owasp-dependency-check="true" --enable-shellcheck="true" --information-severity="true"
           
 
           
