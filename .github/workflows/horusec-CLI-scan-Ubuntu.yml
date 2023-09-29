@@ -8,7 +8,7 @@ permissions:
 jobs:
   horusec-sast-scan:
     runs-on: ubuntu-latest
-    name: Horusec SAST scan
+    name: Horusec security scan (SAST + SCA)
     steps:
       - uses: actions/checkout@v3
 
@@ -32,17 +32,8 @@ jobs:
           sudo docker run hello-world
           curl -fsSL https://raw.githubusercontent.com/ZupIT/horusec/main/deployments/scripts/install.sh | bash -s latest-beta
           sudo horusec version
-          sudo horusec start --config-file-path=horusec-config.json -p="./" -e="false" --enable-owasp-dependency-check="true" --enable-shellcheck="true" --information-severity="true"
+          sudo horusec start --config-file-path=horusec-config.json -p="./" -e="false" --enable-owasp-dependency-check="true" --enable-shellcheck="true" --information-severity="true"  -o="json" -O="horusec-output_json.json"
           
-
-          
-                   
-     #- name: Archive code coverage results
-     #   uses: actions/upload-artifact@v3
-     #   with:
-     #     name: horusec-report-sq
-     #     path: horusec-output_sq.json
-     #     retention-days: 5
 
       - name: Archive code coverage results
         uses: actions/upload-artifact@v3
@@ -65,23 +56,6 @@ jobs:
         with:
           name: horusec-report-json
 
-      - name: Download the artifact
-        uses: actions/download-artifact@v3
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        with:
-          name: horusec-report-sq
-
-      - name: Create Issue From File
-        id: horusec-issue-sq
-        uses: peter-evans/create-issue-from-file@v4
-        with:
-          title: Horusec output SQ
-          content-filepath: horusec-output_sq.json
-          labels: |
-            report
-            automated issue
-
       - name: Create Issue From File
         id: horusec-issue-json
         uses: peter-evans/create-issue-from-file@v4
@@ -91,7 +65,3 @@ jobs:
           labels: |
             report
             automated issue
-    
-
-    
-  
