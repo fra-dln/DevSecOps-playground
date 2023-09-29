@@ -1,4 +1,4 @@
-name: Horusec CLI security scan
+name: Horusec CLI security scan Ununtu
 on: workflow_dispatch
 permissions: 
   contents: read
