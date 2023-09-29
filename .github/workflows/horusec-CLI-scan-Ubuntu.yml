@@ -31,6 +31,8 @@ jobs:
           sudo docker run hello-world
           curl -fsSL https://raw.githubusercontent.com/ZupIT/horusec/master/deployments/scripts/install.sh | bash -s latest-beta
           horusec version
+          sudo docker run horusec version
+          cd /usr/local/bin/horusec
           docker run -v /var/run/docker.sock:/var/run/docker.sock \
             -v $(pwd):/src/horusec \
             horuszup/horusec-cli:latest-beta horusec start -p /src/horusec -P $(pwd) --config-file-path=/src/horusec/horusec-config.json
