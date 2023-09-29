@@ -1,0 +1,78 @@
+name: Horusec SAST scan
+on: workflow_dispatch
+permissions: 
+  contents: read
+  issues: write
+
+jobs:
+  horusec-sast-scan:
+    runs-on: ubuntu-latest
+    name: Horusec SAST scan
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Check out repository code
+        uses: actions/checkout@v2
+      - name: Horusec security scan
+        run: |
+          curl -fsSL https://raw.githubusercontent.com/ZupIT/horusec/main/deployments/scripts/install.sh | bash -s latest
+          horusec start -c="horusec-config.json" -p="./" -e="false" -w="true" -j="true" -o="json" -O="horusec-output_json.json" 
+                   
+     #- name: Archive code coverage results
+     #   uses: actions/upload-artifact@v3
+     #   with:
+     #     name: horusec-report-sq
+     #     path: horusec-output_sq.json
+     #     retention-days: 5
+
+      - name: Archive code coverage results
+        uses: actions/upload-artifact@v3
+        with:
+          name: horusec-report-json
+          path: horusec-output_json.json
+          retention-days: 5
+
+  download-artifacts-e-create-issue:
+    runs-on: ubuntu-latest
+    needs: horusec-sast-scan  #wait for the artifacts
+    name: download-artifacts-e-create-issue
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Download the artifact
+        uses: actions/download-artifact@v3
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          name: horusec-report-json
+
+      - name: Download the artifact
+        uses: actions/download-artifact@v3
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          name: horusec-report-sq
+
+      - name: Create Issue From File
+        id: horusec-issue-sq
+        uses: peter-evans/create-issue-from-file@v4
+        with:
+          title: Horusec output SQ
+          content-filepath: horusec-output_sq.json
+          labels: |
+            report
+            automated issue
+
+      - name: Create Issue From File
+        id: horusec-issue-json
+        uses: peter-evans/create-issue-from-file@v4
+        with:
+          title: Horusec output Json
+          content-filepath: horusec-output_json.json
+          labels: |
+            report
+            automated issue
+    
+
+    
+  
