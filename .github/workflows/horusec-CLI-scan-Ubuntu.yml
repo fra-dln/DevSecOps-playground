@@ -12,7 +12,7 @@ jobs:
       - uses: actions/checkout@v3
 
       - name: Check out repository code
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
       - name: Horusec security scan
         run: |
           for pkg in docker.io docker-doc docker-compose podman-docker containerd runc; do sudo apt-get remove $pkg; done
@@ -31,6 +31,9 @@ jobs:
           sudo docker run hello-world
           curl -fsSL https://raw.githubusercontent.com/ZupIT/horusec/master/deployments/scripts/install.sh | bash -s latest-beta
           horusec version
+          docker run -v /var/run/docker.sock:/var/run/docker.sock \
+            -v $(pwd):/src/horusec \
+            horuszup/horusec-cli:latest-beta horusec start -p /src/horusec -P $(pwd) --config-file-path=/src/horusec/horusec-config.json
                    
      #- name: Archive code coverage results
      #   uses: actions/upload-artifact@v3
