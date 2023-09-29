@@ -1,4 +1,4 @@
-name: Horusec CLI security scan Ununtu
+name: Horusec CLI security scan Ubuntu
 on: workflow_dispatch
 permissions: 
   contents: read
