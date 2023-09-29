@@ -2,6 +2,7 @@ name: Horusec CLI security scan Ubuntu
 on: workflow_dispatch
 permissions: 
   contents: read
+  packages: read
   issues: write
 
 jobs:
