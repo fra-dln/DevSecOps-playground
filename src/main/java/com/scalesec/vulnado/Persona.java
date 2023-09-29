@@ -1,5 +1,5 @@
 package com.scalesec.vulnado;
-
+/*CWE-697: Incorrect Comparison*/
 
 public class Persona {
     private String nome;
