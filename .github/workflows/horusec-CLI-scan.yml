@@ -29,8 +29,8 @@ jobs:
           sudo apt-get install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
           sudo docker run hello-world
           sudo docker pull horuszup/horusec-cli:v2.9.0-beta.3
-          curl -fsSL https://raw.githubusercontent.com/ZupIT/horusec/main/deployments/scripts/install.sh | bash -s latest
-          sudo horusec start -c="horusec-config.json" -p="./" -e="false" -w="true" -j="true" -o="json" -O="horusec-output_json.json" 
+          #curl -fsSL https://raw.githubusercontent.com/ZupIT/horusec/main/deployments/scripts/install.sh | bash -s latest
+          sudo docker run horusec start -c="horusec-config.json" -p="./" -e="false" -w="true" -j="true" -o="json" -O="horusec-output_json.json" 
                    
      #- name: Archive code coverage results
      #   uses: actions/upload-artifact@v3
