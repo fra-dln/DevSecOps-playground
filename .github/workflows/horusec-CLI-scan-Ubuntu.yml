@@ -29,13 +29,14 @@ jobs:
           sudo apt-get install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
           sudo service docker start
           sudo docker run hello-world
-          curl -fsSL https://raw.githubusercontent.com/ZupIT/horusec/master/deployments/scripts/install.sh | bash -s latest
-          horusec version
+          curl -fsSL https://raw.githubusercontent.com/ZupIT/horusec/master/deployments/scripts/install.sh | bash -s latest-beta
+          sudo horusec version  
+          sudo docker pull horuszup/horusec-cli:v2.9.0-beta.3
           sudo docker run horusec version
-          cd /usr/local/bin/horusec
-          docker run -v /var/run/docker.sock:/var/run/docker.sock \
-            -v $(pwd):/src/horusec \
-            horuszup/horusec-cli:latest horusec start -p /src/horusec -P $(pwd) --config-file-path=/src/horusec/horusec-config.json
+          sudo docker run horusec start -p .
+          
+
+          
                    
      #- name: Archive code coverage results
      #   uses: actions/upload-artifact@v3
