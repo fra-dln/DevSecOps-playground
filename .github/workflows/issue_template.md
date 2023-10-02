@@ -1,6 +1,6 @@
 ---
-title: Someone just pushed
-assignees: JasonEtco, matchai
-labels: bug, enhancement
+title: HORUSEC ISSUE
 ---
-Someone just pushed, oh no! Here's who did it: {{ payload.sender.login }}.
+To donwload the full report go to:
+
+${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}

@@ -58,6 +58,11 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           name: horusec-report-sq
+      
+      - name: create-issue
+        uses: JasonEtco/create-an-issue@v2
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           
       #- name: Print the json result
       #  id: stampalog
@@ -91,25 +96,25 @@ jobs:
       #    json: ${{ steps.stampalog.outputs }}
       #- run: echo ${{ steps.table.outputs.table }}
 
-      - name: Create Issue From File
-        id: horusec-issue-sq
-        uses: peter-evans/create-issue-from-file@v4
-        with:
-          title: Horusec output SQ
-          content-filepath: horusec-output_sq.json
-          labels: |
-            report
-            automated issue
+#      - name: Create Issue From File
+ #       id: horusec-issue-sq
+  #      uses: peter-evans/create-issue-from-file@v4
+   #     with:
+    #      title: Horusec output SQ
+     #     content-filepath: horusec-output_sq.json
+      #    labels: |
+       ##     report
+         #   automated issue
 
-      - name: Create Issue From File
-        id: horusec-issue-json
-        uses: peter-evans/create-issue-from-file@v4
-        with:
-          title: Horusec output Json
-          content-filepath: horusec-output_json.json
-          labels: |
-            report
-            automated issue
+#      - name: Create Issue From File
+ #       id: horusec-issue-json
+  #      uses: peter-evans/create-issue-from-file@v4
+   #     with:
+    #      title: Horusec output Json
+     #     content-filepath: horusec-output_json.json
+      #    labels: |
+       #     report
+        #    automated issue
     
 
     
