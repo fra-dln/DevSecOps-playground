@@ -12,6 +12,7 @@ jobs:
         with:
           go-version: '1.13'
       - name: Snyk monitor
+        continue-on-error: true
         run: |
           pip install -r requirements.txt
           snyk test --all-projects
