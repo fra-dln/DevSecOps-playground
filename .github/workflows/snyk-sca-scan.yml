@@ -1,8 +1,8 @@
-name: Snyk example
+name: Snyk sca scan
 on: workflow_dispatch
 
 jobs:
-  security:
+  snyk-sca-scan:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@master
@@ -12,6 +12,6 @@ jobs:
         with:
           go-version: '1.13'
       - name: Snyk monitor
-        run: snyk test
+        run: snyk test --all-projects
         env:
           SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
