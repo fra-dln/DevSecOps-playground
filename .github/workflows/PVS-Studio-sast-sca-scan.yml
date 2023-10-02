@@ -2,6 +2,7 @@ name: PVS-Studio SAST e SCA build analysis
 on: workflow_dispatch
 permissions: 
   contents: read
+  packages: read
   issues: write
 
 jobs:
