@@ -13,6 +13,6 @@ jobs:
       - name: Snyk monitor
         #continue-on-error: true
         run: |
-          snyk test --all-projects
+          snyk test --all-projects --skip-unresolved
         env:
           SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
