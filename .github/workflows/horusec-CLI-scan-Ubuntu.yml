@@ -55,3 +55,9 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           name: horusec-report-json
+      - name: create an issue
+        uses: dacbd/create-issue-action@main
+        with:
+          token: ${{ github.token }}
+          title: Simple test issue
+          body: link to the report ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
