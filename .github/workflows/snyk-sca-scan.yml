@@ -1,4 +1,4 @@
-name: Snyk SCA scan
+name: Snyk SCA scans
 on: workflow_dispatch
 
 jobs:
