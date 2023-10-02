@@ -21,6 +21,13 @@ jobs:
         with:
           name: nuclei.log
           path: nuclei.log
+      
+      - name: create an issue
+        uses: dacbd/create-issue-action@main
+        with:
+          token: ${{ github.token }}
+          title: NUCLEI ISSUE
+          body: link to the report ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
 
       - name: GitHub Security Dashboard Alerts update
         uses: github/codeql-action/upload-sarif@v2
