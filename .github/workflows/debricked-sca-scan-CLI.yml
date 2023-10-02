@@ -1,0 +1,20 @@
+name: Debricked SCA CLI Ubuntu
+on: workflow_dispatch
+permissions: 
+  contents: read
+  packages: read
+  issues: write
+
+jobs:
+  horusec-sast-scan:
+    runs-on: ubuntu-latest
+    name: Debricked SCA
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Check out repository code
+        uses: actions/checkout@v3
+      - name: Debricked scan
+        run: |
+          curl -L https://github.com/debricked/cli/releases/latest/download/cli_linux_x86_64.tar.gz | tar -xz debricked
+          ./debricked scan . --access-token "8e91c5d87506cf1246061015df3aac7685532459ec8ab6e9"
