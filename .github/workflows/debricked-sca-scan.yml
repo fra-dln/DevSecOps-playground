@@ -1,9 +1,9 @@
-name: Vulnerability scan
+name: Debricked SCA scan
 
-on: [push]
+on: workflow_dispatch
 
 jobs:
-  vulnerabilities-scan:
+  debricked-sca-scan:
     runs-on: ubuntu-latest
 
     steps:
