@@ -1,14 +1,18 @@
-name: Snyk SCA scan
+name: Snyk sca scan
 on: workflow_dispatch
 
 jobs:
   snyk-sca-scan:
     runs-on: ubuntu-latest
-    name: Snyk SCA scan
     steps:
       - uses: actions/checkout@master
-      - name: RunSnyk to check for vulnerabilities
-        uses: snyk/actions/maven@master
+      - uses: snyk/actions/setup@master
+      - uses: actions/setup-go@v1
+        with:
+          go-version: '1.13'
+      - name: Snyk monitor
         continue-on-error: true
+        run: |
+          snyk test --all-projects --skip-unresolved
         env:
           SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
