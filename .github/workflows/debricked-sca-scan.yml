@@ -1,0 +1,16 @@
+name: Vulnerability scan
+
+on: [push]
+
+jobs:
+  vulnerabilities-scan:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v3
+      - uses: debricked/actions@v3
+     # - uses: debricked/actions/scan-non-docker@v3  #NON docker actions
+     # - uses: debricked/actions/resolve@v3
+     # - uses: debricked/actions/resolve-non-docker@v3  #NON docker actions
+        env:
+          DEBRICKED_TOKEN: ${{ secrets.DEBRICKED_TOKEN }}
