@@ -1,20 +1,17 @@
-name: Nuclei DAST scan
-on: workflow_dispatch
+name: Nuclei-DAST-Scan
+on:
+    workflow_dispatch:
 
 jobs:
-  nuclei-dast-scan:
+  nuclei-dast-can:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      
-      - name: Nuclei DAST Scan
+
+      - name: Nuclei - Vulnerability Scan
         uses: projectdiscovery/nuclei-action@main
         with:
-          target: https://ginandjuice.shop/
-          #urls: urls.txt
-          flags: "-severity critical,high,medium,low -stats"
-          github-report: true
-          github-token: ${{ secrets.GITHUB_TOKEN }}
+          target: https://ginandjuice.shop
 
       - name: GitHub Workflow artifacts
         uses: actions/upload-artifact@v2
