@@ -1,17 +1,18 @@
 name: Nuclei DAST scan
 on: workflow_dispatch
+permissions:
+  issues: write
 
 jobs:
   nuclei-dast-scan:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
-      
-      - name: Nuclei DAST Scan
+      - uses: actions/checkout@v3
+
+      - name: Nuclei - Vulnerability Scan
         uses: projectdiscovery/nuclei-action@main
         with:
-          target: https://example.com
-          #urls: urls.txt
+          target: https://ginandjuice.shop/
           flags: "-severity critical,high,medium,low -stats"
           github-report: true
           github-token: ${{ secrets.GITHUB_TOKEN }}
@@ -21,15 +22,9 @@ jobs:
         with:
           name: nuclei.log
           path: nuclei.log
-      
-      - name: create an issue
-        uses: dacbd/create-issue-action@main
-        with:
-          token: ${{ github.token }}
-          title: NUCLEI ISSUE
-          body: link to the report ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
 
       - name: GitHub Security Dashboard Alerts update
         uses: github/codeql-action/upload-sarif@v2
         with:
           sarif_file: nuclei.sarif
+
