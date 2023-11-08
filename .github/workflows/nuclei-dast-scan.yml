@@ -1,15 +1,11 @@
 name: Nuclei DAST scan
 on: workflow_dispatch
-permissions:
-  contents: read
-  packages: read
-  issues: write
-  
+
 jobs:
   nuclei-dast-scan:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v2
       
       - name: Nuclei DAST Scan
         uses: projectdiscovery/nuclei-action@main
@@ -21,8 +17,12 @@ jobs:
           github-token: ${{ secrets.GITHUB_TOKEN }}
 
       - name: GitHub Workflow artifacts
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v2
         with:
           name: nuclei.log
           path: nuclei.log
 
+      - name: GitHub Security Dashboard Alerts update
+        uses: github/codeql-action/upload-sarif@v2
+        with:
+          sarif_file: nuclei.sarif
