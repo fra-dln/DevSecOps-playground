@@ -13,12 +13,13 @@ jobs:
       
       - name: Nuclei DAST Scan
         uses: projectdiscovery/nuclei-action@main
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           target: https://ginandjuice.shop/
           #urls: urls.txt
           flags: "-severity critical,high,medium,low -stats"
           github-report: true
-          github-token: ${{ secrets.GITHUB_TOKEN }}
 
       - name: GitHub Workflow artifacts
         uses: actions/upload-artifact@v3
