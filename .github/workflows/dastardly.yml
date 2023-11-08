@@ -1,0 +1,23 @@
+name: dastardly DAST scan
+on: workflow_dispatch
+
+jobs:
+    zap-dast-scan:
+      runs-on: ubuntu-latest
+      name: dastardly DAST scan
+      steps:
+        - name: Checkout
+          uses: actions/checkout@v4
+
+        - name: Run Dastardly Action Step
+          continue-on-error: true
+          uses: PortSwigger/dastardly-github-action@main
+          with:
+            target-url: 'https://ginandjuice.shop'
+            
+        - name: Publish Test Report
+          if: always()                                    
+          uses: mikepenz/action-junit-report@v3
+          with:
+            report_paths: '**/dastardly-report.xml'    
+            require_tests: true    
