@@ -14,7 +14,15 @@ jobs:
           uses: PortSwigger/dastardly-github-action@main
           with:
             target-url: 'https://ginandjuice.shop'
-            
+
+        
+        - name: Archive code coverage results
+          uses: actions/upload-artifact@v3
+          with:
+            name: dastardly-report-xml
+            path: '**/dastardly-report.xml'
+            retention-days: 5
+
         - name: Publish Test Report
           if: always()                                    
           uses: mikepenz/action-junit-report@v3
