@@ -2,17 +2,18 @@ name: Nuclei DAST scan
 on: workflow_dispatch
 permissions:
   issues: write
-
+  
 jobs:
   nuclei-dast-scan:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
-
-      - name: Nuclei - Vulnerability Scan
+      - uses: actions/checkout@v2
+      
+      - name: Nuclei DAST Scan
         uses: projectdiscovery/nuclei-action@main
         with:
           target: https://ginandjuice.shop/
+          #urls: urls.txt
           flags: "-severity critical,high,medium,low -stats"
           github-report: true
           github-token: ${{ secrets.GITHUB_TOKEN }}
